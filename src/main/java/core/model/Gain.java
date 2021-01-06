@@ -14,4 +14,9 @@ public class Gain {
     public void setGain(int gain) {
         this.gain = gain;
     }
+
+    @Override
+    public String toString() {
+        return "Gain{" + "gain=" + gain + '}';
+    }
 }
