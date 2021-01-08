@@ -6,8 +6,6 @@ import core.dao.GainDao;
 import core.dao.GainDaoImpl;
 import core.model.Bet;
 import core.model.Gain;
-
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ConsoleHandler {
