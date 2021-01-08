@@ -27,13 +27,14 @@ public class ConsoleHandler {
                 double inputRisk = Double.parseDouble(strings[1]);
                 bet = new Bet(inputBet, inputRisk);
                 gain = new Gain(inputBet * inputRisk);
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Input correct data, please");
             }
-            gainDao.add(gain);
-            betDao.add(bet);
-            System.out.println((bet == null ? null : bet.toString()) + ", "
-                    + (gain == null ? null : gain.toString()));
+            if (bet != null && gain != null) {
+                gainDao.add(gain);
+                betDao.add(bet);
+                System.out.println(bet + ", " + gain);
+            }
         }
     }
 }
