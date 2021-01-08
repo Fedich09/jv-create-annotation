@@ -1,13 +1,13 @@
 package core.model;
 
 public class Gain {
-    private int gain;
+    private double gain;
 
-    public Gain(int gain) {
+    public Gain(double gain) {
         this.gain = gain;
     }
 
-    public int getGain() {
+    public double getGain() {
         return gain;
     }
 

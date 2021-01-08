@@ -2,11 +2,15 @@ package core.controller;
 
 import core.dao.BetDao;
 import core.dao.BetDaoImp;
+import core.dao.GainDao;
+import core.dao.GainDaoImpl;
 import core.model.Bet;
+import core.model.Gain;
 import java.util.Scanner;
 
 public class ConsoleHandler {
-    BetDao betDao = new BetDaoImp();
+    private BetDao betDao = new BetDaoImp();
+    private GainDao gainDao = new GainDaoImpl();
 
     public void handle() {
         Scanner scanner = new Scanner(System.in);
@@ -15,13 +19,18 @@ public class ConsoleHandler {
             if (input.equalsIgnoreCase("q")) {
                 return;
             }
+            Gain gain = null;
             Bet bet = null;
             try {
-                String[] betData = input.split(" ");
-                bet = new Bet(Integer.parseInt(betData[0]), Double.parseDouble(betData[1]));
+                String[] strings = input.split(" ");
+                int inputBet = Integer.parseInt(strings[0]);
+                double inputRisk = Double.parseDouble(strings[1]);
+                bet = new Bet(inputBet, inputRisk);
+                gain = new Gain(inputBet * inputRisk);
             } catch (NumberFormatException e) {
                 System.out.println("Input correct data, please");
             }
+            gainDao.add(gain);
             betDao.add(bet);
             System.out.println(bet == null ? null : bet.toString());
         }
