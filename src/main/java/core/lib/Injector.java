@@ -23,14 +23,10 @@ public class Injector {
                     if (field.getType().equals(BetDao.class)
                             && BetDaoImp.class.getAnnotation(Dao.class) != null) {
                         field.set(instance, new BetDaoImp());
-                    } else if (BetDaoImp.class.getAnnotation(Dao.class) == null) {
-                        throw new NotExistAnnotationException("Not exist annotation "
-                                + "in this class, we cant inject this instance");
-                    }
-                    if (field.getType().equals(GainDao.class)
+                    } else if (field.getType().equals(GainDao.class)
                             && GainDaoImpl.class.getAnnotation(Dao.class) != null) {
                         field.set(instance, new GainDaoImpl());
-                    } else if (GainDaoImpl.class.getAnnotation(Dao.class) == null) {
+                    } else {
                         throw new NotExistAnnotationException("Not exist annotation "
                                 + "in this class, we cant inject this instance ");
                     }
