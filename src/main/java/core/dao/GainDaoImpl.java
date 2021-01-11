@@ -1,9 +1,11 @@
 package core.dao;
 
 import core.db.Storage;
+import core.lib.Dao;
 import core.model.Gain;
 import java.util.List;
 
+@Dao
 public class GainDaoImpl implements GainDao {
 
     @Override

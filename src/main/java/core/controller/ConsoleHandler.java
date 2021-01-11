@@ -1,16 +1,17 @@
 package core.controller;
 
 import core.dao.BetDao;
-import core.dao.BetDaoImp;
 import core.dao.GainDao;
-import core.dao.GainDaoImpl;
+import core.lib.Inject;
 import core.model.Bet;
 import core.model.Gain;
 import java.util.Scanner;
 
 public class ConsoleHandler {
-    private BetDao betDao = new BetDaoImp();
-    private GainDao gainDao = new GainDaoImpl();
+    @Inject
+    private BetDao betDao;
+    @Inject
+    private GainDao gainDao;
 
     public void handle() {
         Scanner scanner = new Scanner(System.in);
@@ -31,8 +32,8 @@ public class ConsoleHandler {
                 System.out.println("Input correct data, please");
             }
             if (bet != null && gain != null) {
-                gainDao.add(gain);
                 betDao.add(bet);
+                gainDao.add(gain);
                 System.out.println(bet + ", " + gain);
             }
         }
